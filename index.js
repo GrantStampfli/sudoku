@@ -11,8 +11,8 @@ module.exports.findSpace = function(string) {
 	return result;
 };
 
-module.exports.nextSpace = function(string) {
-	var index = string.indexOf(' ', 4);
+module.exports.nextSpace = function(string, startingSpace) {
+	var index = string.indexOf(' ', (startingSpace.row *9 + startingSpace.col + 1));
 	var result = { };
 
 	result.row = Math.floor(index / 9);

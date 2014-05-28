@@ -10,6 +10,24 @@ describe ('(sudoku)', function() {
 		expect(index.findSpace(sudokuString)).to.eql({row:0, col:3});
 	});
 	it('start from a previous space and find next space', function () {
-		expect(index.nextSpace(sudokuString)).to.eql({ row:0, col:5});
+		var startingSpace = {
+			row:0,
+			col:4
+		};
+		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:0, col:5});
+	});
+	it('start from a previous space and find next space', function () {
+		var startingSpace = {
+			row:0,
+			col:4
+		};
+		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:0, col:5});
+	});
+	it('start from a previous space and find next space', function () {
+		var startingSpace = {
+			row:1,
+			col:5
+		};
+		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:1, col:6});
 	});
 });

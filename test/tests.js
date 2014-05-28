@@ -7,7 +7,7 @@ var sudokuString = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3 
 
 describe ('(sudoku)', function() {
 	it('looks for a space in a string row', function() {
-		expect(index.findSpace(sudokuString)).to.eql({row:1, col:4});
+		expect(index.findSpace(sudokuString)).to.eql({row:0, col:3});
 	});
 
 });

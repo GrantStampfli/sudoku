@@ -6,9 +6,22 @@ var sudokuString = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3 
 
 
 describe ('(sudoku)', function() {
-	it('start from possition 0,0 and move to find space', function() {
-		expect(index.findSpace(sudokuString)).to.eql({row:0, col:3});
+	it('start from position 0,0 and move to find space', function() {
+		var startingSpace = {
+			row:0,
+			col:0
+		};
+		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({row:0, col:3});
 	});
+
+	it('start from position 0,0 and move to find space', function() {
+		var startingSpace = {
+			row:2,
+			col:0
+		};
+		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({row:2, col:2});
+	});
+
 	it('start from a previous space and find next space', function () {
 		var startingSpace = {
 			row:0,
@@ -16,13 +29,7 @@ describe ('(sudoku)', function() {
 		};
 		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:0, col:5});
 	});
-	it('start from a previous space and find next space', function () {
-		var startingSpace = {
-			row:0,
-			col:4
-		};
-		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:0, col:5});
-	});
+
 	it('start from a previous space and find next space', function () {
 		var startingSpace = {
 			row:1,

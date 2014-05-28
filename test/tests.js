@@ -10,6 +10,6 @@ describe ('(sudoku)', function() {
 		expect(index.findSpace(sudokuString)).to.eql({row:0, col:3});
 	});
 	it('start from a previous space and find next space', function () {
-		expect(index.findSpace(sudokuString)).to.eql({ row:0, col:5});
+		expect(index.nextSpace(sudokuString)).to.eql({ row:0, col:5});
 	});
 });

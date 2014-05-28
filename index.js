@@ -12,7 +12,7 @@
 // };
 
 module.exports.nextSpace = function(string, startingSpace) {
-	var index = string.indexOf(' ', (startingSpace.row * 9 + startingSpace.col + 1));
+	var index = string.indexOf(' ', (startingSpace.row * 9 + startingSpace.col));
 	var result = { };
 
 	result.row = Math.floor(index / 9);

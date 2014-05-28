@@ -30,7 +30,5 @@ module.exports.numExistsInRow = function(string, startingSpace, n) {
 
 	console.log(row.indexOf(n.toString()));
 
-	if (row.indexOf(n.toString()) !== -1) {
-		return true;
-	}
+	return (row.indexOf(n.toString()) !== -1);
 };

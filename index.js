@@ -7,5 +7,6 @@ module.exports.findSpace = function(string) {
 	result.row = Math.floor(index / 9);
 	result.col = index % 9;
 
+	console.log(result);
 	return result;
 };

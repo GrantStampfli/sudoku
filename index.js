@@ -22,3 +22,15 @@ module.exports.nextSpace = function(string, startingSpace) {
 	console.log(result);
 	return result;
 };
+
+module.exports.numExistsInRow = function(string, startingSpace, n) {
+	//take a number and compare it to the row and determine if it already there
+	//if it is, next number
+	var row = '158 2  6 ';
+
+	console.log(row.indexOf(n.toString()));
+
+	if (row.indexOf(n.toString()) !== -1) {
+		return true;
+	}
+};

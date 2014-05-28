@@ -43,3 +43,10 @@ describe ('(sudoku)', function() {
 		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:1, col:6});
 	});
 });
+describe ('(sudoku)', function() {
+	it('tests if 1 can is already in the row', function() {
+		expect(index.numExistsInRow(sudokuString, { row: 0, col: 0 }, 1)).to.eql(true);
+		
+	});
+});
+

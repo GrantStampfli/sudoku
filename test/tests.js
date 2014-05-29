@@ -44,9 +44,13 @@ describe ('(sudoku)', function() {
 	});
 });
 describe ('(sudoku)', function() {
-	it('tests if 1 can is already in the row', function() {
+	it('tests if 1 is already in the row', function() {
 		expect(index.numExistsInRow(sudokuString, { row: 0, col: 0 }, 1)).to.eql(true);
-		
 	});
+
+	it('tests if 9 is already in the 2nd row', function() {
+		expect(index.numExistsInRow(sudokuString, { row: 1, col: 0 }, 9)).to.eql(true);
+	});
+
 });
 

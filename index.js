@@ -23,9 +23,31 @@ module.exports.nextSpace = function(string, startingPosition) {
 };
 
 module.exports.numExistsInRow = function(string, position, n) {
-	//take a number and compare it to the row and determine if it already there
-	//if it is, next number
+	
 	var rowString = string.substr(position.row * 9, 9);
 
 	return (rowString.indexOf(n.toString()) !== -1);
 };
+
+module.exports.numExistsInCol = function(string, position, n) {
+
+	var array = string.split('');
+
+	var colArray = array.filter(function(cell, index) {
+		return (index % 9 === 0);
+	});
+
+	var colString = colArray.join('');
+
+	return (colString.indexOf(n.toString()) !== -1);
+};
+
+
+
+
+
+
+
+
+
+

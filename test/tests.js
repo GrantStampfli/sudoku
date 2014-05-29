@@ -43,6 +43,7 @@ describe ('(sudoku)', function() {
 		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:1, col:6});
 	});
 });
+//***********************************************
 describe ('(sudoku)', function() {
 	it('tests if 1 is already in the row', function() {
 		expect(index.numExistsInRow(sudokuString, { row: 0, col: 0 }, 1)).to.eql(true);
@@ -51,6 +52,12 @@ describe ('(sudoku)', function() {
 	it('tests if 9 is already in the 2nd row', function() {
 		expect(index.numExistsInRow(sudokuString, { row: 1, col: 0 }, 9)).to.eql(true);
 	});
+});
 
+//***********************************************
+describe ('(sudoku)', function() {
+	it('tests if 1 is already in the same row and column', function() {
+		expect(index.numExistsInCol(sudokuString, { row: 0, col: 0 }, 4)).to.eql(true);
+	});
 });
 

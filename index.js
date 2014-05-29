@@ -33,17 +33,16 @@ module.exports.numExistsInCol = function(string, position, n) {
 module.exports.numExistsInBox = function(string, position, n) {
 	
 	// var array = [1,5,8,2, , , ,3, ];
-	var boxNumber = 1; //eventually will get this from the position
-
+	var boxNumber = Math.floor(position.col / 3);
 	var colStartValue = boxNumber * 3;
 	var array = string.split('');
 
 	var boxArray = array.filter(function(cell, index) {
 		var row= Math.floor(index / 9);
 		var col= index % 9;
-		console.log('%d: %d %d', index, Math.floor(index/9), index%9);
+		// console.log('%d: %d %d', index, Math.floor(index/9), index%9);
 
-		return ((row >= 0) && (row <= 2) && (col >= 0+colStartValue) && (col <= 2+colStartValue));
+		return ((row >= 0) && (row <= 2) && (col >= 0+colStartValue) && (col <= 2+colStartValue)) ;
 	});
 
 	var boxString = boxArray.join('');

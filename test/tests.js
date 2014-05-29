@@ -56,8 +56,14 @@ describe ('(sudoku)', function() {
 
 //***********************************************
 describe ('(sudoku)', function() {
-	it('tests if 1 is already in the same row and column', function() {
+	it('tests if 4 is already in the same column 0', function() {
 		expect(index.numExistsInCol(sudokuString, { row: 0, col: 0 }, 4)).to.eql(true);
+	});
+	it('tests if 3 is already in the same column 1', function() {
+		expect(index.numExistsInCol(sudokuString, { row: 1, col: 1 }, 3)).to.eql(true);
+	});
+	it('tests if 4 is already in the same column 2', function() {
+		expect(index.numExistsInCol(sudokuString, { row: 0, col: 2 }, 4)).to.eql(true);
 	});
 });
 

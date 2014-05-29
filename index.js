@@ -1,16 +1,3 @@
-
-
-// module.exports.findSpace = function(string) {
-// 	var index = string.indexOf(' ');
-// 	var result = { };
-
-// 	result.row = Math.floor(index / 9);
-// 	result.col = index % 9;
-
-// 	console.log(result);
-// 	return result;
-// };
-
 module.exports.nextSpace = function(string, startingPosition) {
 	startingPosition = startingPosition || { row: 0, col: 0 };
 	var index = string.indexOf(' ', (startingPosition.row * 9 + startingPosition.col));
@@ -34,20 +21,12 @@ module.exports.numExistsInCol = function(string, position, n) {
 	var array = string.split('');
 
 	var colArray = array.filter(function(cell, index) {
-		return (index % 9 === 0);
+	
+		return (index % 9 === position.col);
 	});
 
 	var colString = colArray.join('');
 
 	return (colString.indexOf(n.toString()) !== -1);
 };
-
-
-
-
-
-
-
-
-
 

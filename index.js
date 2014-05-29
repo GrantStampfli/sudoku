@@ -37,15 +37,14 @@ module.exports.numExistsInBox = function(string, position, n) {
 	var array = string.split('');
 
 	var boxArray = array.filter(function(cell, index) {
-		var division= Math.floor(index / 9);
-		var modulus= index % 9;
-		//console.log('%d: %d %d', index, Math.floor(index/9), index%9);
+		var row= Math.floor(index / 9);
+		var col= index % 9;
+		console.log('%d: %d %d', index, Math.floor(index/9), index%9);
 
-		return (division >= 0 && division <= 2 && modulus >= 0 && modulus <= 2);
+		return (row >= 0 && row <= 2 && col >= 0 && col <= 2);
 	});
 
 	var boxString = boxArray.join('');
-	console.log(boxArray);
 
 	return (boxString.indexOf(n.toString()) !== -1);
 	

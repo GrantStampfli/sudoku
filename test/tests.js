@@ -67,3 +67,10 @@ describe ('(sudoku)', function() {
 	});
 });
 
+describe ('(sudoku)', function() {
+	it('tests if 5 is already in the same box', function() {
+		expect(index.numExistsInBox(sudokuString, { row: 0, col: 0 }, 5)).to.eql(true);
+	});
+	
+});
+

@@ -30,3 +30,28 @@ module.exports.numExistsInCol = function(string, position, n) {
 	return (colString.indexOf(n.toString()) !== -1);
 };
 
+module.exports.numExistsInBox = function(string, position, n) {
+	
+	// var array = [1,5,8,2, , , ,3, ];
+	var boxNumber = 0; //eventually will get this from the position
+	var array = string.split('');
+
+	var boxArray = array.filter(function(cell, index) {
+		var division= Math.floor(index / 9);
+		var modulus= index % 9;
+		//console.log('%d: %d %d', index, Math.floor(index/9), index%9);
+
+		return (division >= 0 && division <= 2 && modulus >= 0 && modulus <= 2);
+	});
+
+	var boxString = boxArray.join('');
+	console.log(boxArray);
+
+	return (boxString.indexOf(n.toString()) !== -1);
+	
+};
+
+
+
+
+

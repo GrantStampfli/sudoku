@@ -87,10 +87,13 @@ describe ('(sudoku)', function() {
 });
 //***********************************************
 describe ('(sudoku)', function() {
-	it('tests for 3 in col:6 row:0', function() {
-		expect(index.solvedSpace(sudokuString, { row: 0, col: 6 })).to.eql(3);
+	it('solves for 3 in col:6 row:0', function() {
+		expect(index.solveSpace(sudokuString, { row: 0, col: 6 })).to.eql(3);
 	});
+	it('cannot solve a space that can not be solved', function () {
+		expect(index.solveSpace(sudokuString, { row: 0, col:3 })).to.eql(undefined);
 
+	});
 });
 
 

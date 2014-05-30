@@ -21,7 +21,6 @@ var numExistsInRow = module.exports.numExistsInRow = function(string, position, 
 var numExistsInCol = module.exports.numExistsInCol = function(string, position, n) {
 
 	var array = string.split('');
-
 	var colArray = array.filter(function(cell, index) {
 	
 		return (index % 9 === position.col);
@@ -54,20 +53,19 @@ var numExistsInBox = module.exports.numExistsInBox = function(string, position, 
 	return (boxString.indexOf(n.toString()) !== -1);
 };
 
-module.exports.solvedSpace = function(string, position) {
-	
+module.exports.solveSpace = function(string, position) {
 	var numRange = _.range(1, 10);
-	var result;
+	var result = [];
 
 	numRange.forEach(function(n){
 		if (numExistsInRow(string, position, n) === false && 
 			numExistsInCol(string, position, n) === false && 
 			numExistsInBox(string, position, n) === false) {
-			result = n;
+			result.push (n);
 		}
-		
 	}); 
-	return result;
+
+	return result.length === 1 ? result[0] : undefined;
 };
 
 

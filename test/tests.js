@@ -79,6 +79,21 @@ describe ('(sudoku)', function() {
 	it('tests if 7 is already in the same box(the next space over)', function() {
 		expect(index.numExistsInBox(sudokuString, { row: 3, col: 3 }, 7)).to.eql(true);
 	});
-
+	it.only('tests if 9 is already in the same box(the next space over)', function() {
+		expect(index.numExistsInBox(sudokuString, { row: 5, col: 5 }, 9)).to.eql(true);
+	});
 });
+
+// describe ('(sudoku)', function() {
+// 	it('tests if 6 is already in the same box(box4)', function() {
+// 		expect(index.numExistsInBox(sudokuString, { row: 3, col: 1 }, 6)).to.eql(true);
+// 	});
+
+// });
+
+
+
+
+
+
 

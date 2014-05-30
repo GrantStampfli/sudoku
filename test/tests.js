@@ -43,7 +43,6 @@ describe ('(sudoku)', function() {
 		expect(index.nextSpace(sudokuString, startingSpace)).to.eql({ row:1, col:6});
 	});
 });
-//***********************************************
 describe ('(sudoku)', function() {
 	it('tests if 1 is already in the row', function() {
 		expect(index.numExistsInRow(sudokuString, { row: 0, col: 0 }, 1)).to.eql(true);
@@ -53,8 +52,6 @@ describe ('(sudoku)', function() {
 		expect(index.numExistsInRow(sudokuString, { row: 1, col: 0 }, 9)).to.eql(true);
 	});
 });
-
-//***********************************************
 describe ('(sudoku)', function() {
 	it('tests if 4 is already in the same column 0', function() {
 		expect(index.numExistsInCol(sudokuString, { row: 0, col: 0 }, 4)).to.eql(true);
@@ -66,9 +63,6 @@ describe ('(sudoku)', function() {
 		expect(index.numExistsInCol(sudokuString, { row: 0, col: 2 }, 4)).to.eql(true);
 	});
 });
-
-//***********************************************
-
 describe ('(sudoku)', function() {
 	it('tests if 5 is already in the same box', function() {
 		expect(index.numExistsInBox(sudokuString, { row: 0, col: 0 }, 5)).to.eql(true);
@@ -85,7 +79,6 @@ describe ('(sudoku)', function() {
 		expect(index.numExistsInBox(sudokuString, { row: 5, col: 5 }, 9)).to.eql(true);
 	});
 });
-//***********************************************
 describe ('(sudoku)', function() {
 	it('solves for 3 in col:6 row:0', function() {
 		expect(index.solveSpace(sudokuString, { row: 0, col: 6 })).to.eql(3);
@@ -98,6 +91,11 @@ describe ('(sudoku)', function() {
 describe ('(sudoku)', function () {
 	it('stores the solved numbers in the sudokuString', function () {
 		expect(index.storeSolvedNumber(sudokuString, { row: 0, col: 6 })).to.eql(sudokuStringFirstSolved);
+	});
+});
+describe('(sudoku', function () {
+	it('takes in a sudokuString and starts solving then pushes the first result', function () {
+		expect(index.startSolving(sudokuString)).to.eql(sudokuStringFirstSolved);
 	});
 });
 

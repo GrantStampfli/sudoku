@@ -13,6 +13,13 @@ var positionFromIndex = function(index) {
 	return result;
 };
 
+var nextPosition = function(position) {
+	position.col += 1;
+	position.row += Math.floor(position.col / 9);
+	position.col = position.col % 9;
+	return position;
+};
+
 var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
 	startingPosition = startingPosition || { row: 0, col: 0 };
 	var startingIndex = indexFromPosition(startingPosition);
@@ -74,11 +81,27 @@ var solveSpace = module.exports.solveSpace = function(string, position) {
 	return result.length === 1 ? result[0] : undefined;
 };
 
-module.exports.storeSolvedNumber = function(string, position) {
+var storeSolvedNumber = module.exports.storeSolvedNumber = function(string, position) {
 	var array = string.split('');
 	var index = indexFromPosition(position);
 	array[index] = solveSpace(string, position);
 	return array.join('');
+};
+
+var solveCells = module.exports.solveCells = function(string) {
+	var position = nextSpace(string);
+	var solvedString;
+
+	while(!solvedString) {
+		if (solveSpace(string, position)) {
+			
+			solvedString = storeSolvedNumber(string, position);
+		}else {
+			position = nextSpace(string, nextPosition(position));
+		}
+	}
+	return solvedString;
+
 };
 
 

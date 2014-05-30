@@ -94,8 +94,8 @@ describe ('(sudoku)', function () {
 	});
 });
 describe('(sudoku', function () {
-	it('takes in a sudokuString and starts solving then pushes the first result', function () {
-		expect(index.startSolving(sudokuString)).to.eql(sudokuStringFirstSolved);
+	it('takes in a sudokuString and looks for the first cell it can solve', function () {
+		expect(index.solveCells(sudokuString)).to.eql(sudokuStringFirstSolved);
 	});
 });
 

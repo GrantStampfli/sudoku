@@ -84,13 +84,6 @@ describe ('(sudoku)', function() {
 	});
 });
 
-// describe ('(sudoku)', function() {
-// 	it('tests if 6 is already in the same box(box4)', function() {
-// 		expect(index.numExistsInBox(sudokuString, { row: 3, col: 1 }, 6)).to.eql(true);
-// 	});
-
-// });
-
 
 
 

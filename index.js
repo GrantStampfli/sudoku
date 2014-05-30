@@ -1,14 +1,23 @@
 var _ = require('lodash');
 
-var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
-	startingPosition = startingPosition || { row: 0, col: 0 };
-	var index = string.indexOf(' ', (startingPosition.row * 9 + startingPosition.col));
+var indexFromPosition = function(position) {
+	return position.row * 9 + position.col;
+};
+
+var positionFromIndex = function(index) {
 	var result = { };
 
 	result.row = Math.floor(index / 9);
 	result.col = index % 9;
 
 	return result;
+};
+
+var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
+	startingPosition = startingPosition || { row: 0, col: 0 };
+	var startingIndex = indexFromPosition(startingPosition);
+	var index = string.indexOf(' ', startingIndex);
+	return positionFromIndex(index);
 };
 
 var numExistsInRow = module.exports.numExistsInRow = function(string, position, n) {
@@ -22,8 +31,7 @@ var numExistsInCol = module.exports.numExistsInCol = function(string, position, 
 
 	var array = string.split('');
 	var colArray = array.filter(function(cell, index) {
-	
-		return (index % 9 === position.col);
+		return (positionFromIndex(index).col === position.col);
 	});
 
 	var colString = colArray.join('');
@@ -41,11 +49,9 @@ var numExistsInBox = module.exports.numExistsInBox = function(string, position, 
 	var array = string.split('');
 
 	var boxArray = array.filter(function(cell, index) {
-		var row= Math.floor(index / 9);
-		var col= index % 9;
-		
-		return ((row >= 0+rowStartValue) && (row <= 2+rowStartValue) && 
-					(col >= 0+colStartValue) && (col <= 2+colStartValue));
+		var cellPosition = positionFromIndex(index);		
+		return ((cellPosition.row >= 0+rowStartValue) && (cellPosition.row <= 2+rowStartValue) && 
+					(cellPosition.col >= 0+colStartValue) && (cellPosition.col <= 2+colStartValue));
 	});
 
 	var boxString = boxArray.join('');
@@ -70,7 +76,8 @@ var solveSpace = module.exports.solveSpace = function(string, position) {
 
 module.exports.storeSolvedNumber = function(string, position) {
 	var array = string.split('');
-	array[position.row * 9 + position.col] = solveSpace(string, position);
+	var index = indexFromPosition(position);
+	array[index] = solveSpace(string, position);
 	return array.join('');
 };
 

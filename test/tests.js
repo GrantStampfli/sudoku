@@ -4,7 +4,7 @@ var index = require('../index');
 
 var sudokuString = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
 var sudokuString2 = ' 58 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
-
+var sudokuStringFirstSolved = '158 2 36 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
 
 describe ('(sudoku)', function() {
 	it('start from position 0,0 and move to find space', function() {
@@ -93,6 +93,11 @@ describe ('(sudoku)', function() {
 	it('cannot solve a space that can not be solved', function () {
 		expect(index.solveSpace(sudokuString, { row: 0, col:3 })).to.eql(undefined);
 
+	});
+});
+describe ('(sudoku)', function () {
+	it('stores the solved numbers in the sudokuString', function () {
+		expect(index.storeSolvedNumber(sudokuString, { row: 0, col: 6 })).to.eql(sudokuStringFirstSolved);
 	});
 });
 

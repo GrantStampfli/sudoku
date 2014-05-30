@@ -53,7 +53,7 @@ var numExistsInBox = module.exports.numExistsInBox = function(string, position, 
 	return (boxString.indexOf(n.toString()) !== -1);
 };
 
-module.exports.solveSpace = function(string, position) {
+var solveSpace = module.exports.solveSpace = function(string, position) {
 	var numRange = _.range(1, 10);
 	var result = [];
 
@@ -68,6 +68,10 @@ module.exports.solveSpace = function(string, position) {
 	return result.length === 1 ? result[0] : undefined;
 };
 
-
+module.exports.storeSolvedNumber = function(string, position) {
+	var array = string.split('');
+	array[position.row * 9 + position.col] = solveSpace(string, position);
+	return array.join('');
+};
 
 

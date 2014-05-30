@@ -1,4 +1,6 @@
-module.exports.nextSpace = function(string, startingPosition) {
+var _ = require('lodash');
+
+var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
 	startingPosition = startingPosition || { row: 0, col: 0 };
 	var index = string.indexOf(' ', (startingPosition.row * 9 + startingPosition.col));
 	var result = { };
@@ -9,14 +11,14 @@ module.exports.nextSpace = function(string, startingPosition) {
 	return result;
 };
 
-module.exports.numExistsInRow = function(string, position, n) {
+var numExistsInRow = module.exports.numExistsInRow = function(string, position, n) {
 	
 	var rowString = string.substr(position.row * 9, 9);
 
 	return (rowString.indexOf(n.toString()) !== -1);
 };
 
-module.exports.numExistsInCol = function(string, position, n) {
+var numExistsInCol = module.exports.numExistsInCol = function(string, position, n) {
 
 	var array = string.split('');
 
@@ -30,9 +32,11 @@ module.exports.numExistsInCol = function(string, position, n) {
 	return (colString.indexOf(n.toString()) !== -1);
 };
 
-module.exports.numExistsInBox = function(string, position, n) {
+var numExistsInBox = module.exports.numExistsInBox = function(string, position, n) {
 
-	var boxNumber = Math.floor(position.col / 3) + Math.floor(position.row / 3) * 3;
+	var boxNumber = Math.floor(position.col / 3) + 
+		Math.floor(position.row / 3) * 3;
+	
 	var rowStartValue = Math.floor(boxNumber / 3) * 3;
 	var colStartValue = (boxNumber % 3) * 3;
 	var array = string.split('');
@@ -48,9 +52,23 @@ module.exports.numExistsInBox = function(string, position, n) {
 	var boxString = boxArray.join('');
 
 	return (boxString.indexOf(n.toString()) !== -1);
-	
 };
 
+module.exports.solvedSpace = function(string, position) {
+	
+	var numRange = _.range(1, 10);
+	var result;
+
+	numRange.forEach(function(n){
+		if (numExistsInRow(string, position, n) === false && 
+			numExistsInCol(string, position, n) === false && 
+			numExistsInBox(string, position, n) === false) {
+			result = n;
+		}
+		
+	}); 
+	return result;
+};
 
 
 

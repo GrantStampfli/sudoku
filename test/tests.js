@@ -67,6 +67,8 @@ describe ('(sudoku)', function() {
 	});
 });
 
+//***********************************************
+
 describe ('(sudoku)', function() {
 	it('tests if 5 is already in the same box', function() {
 		expect(index.numExistsInBox(sudokuString, { row: 0, col: 0 }, 5)).to.eql(true);
@@ -82,6 +84,13 @@ describe ('(sudoku)', function() {
 	it('tests if 9 is already in the same box number 4', function() {
 		expect(index.numExistsInBox(sudokuString, { row: 5, col: 5 }, 9)).to.eql(true);
 	});
+});
+//***********************************************
+describe ('(sudoku)', function() {
+	it('tests for 3 in col:6 row:0', function() {
+		expect(index.solvedSpace(sudokuString, { row: 0, col: 6 })).to.eql(3);
+	});
+
 });
 
 

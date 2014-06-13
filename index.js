@@ -99,9 +99,15 @@ var solveCells = module.exports.solveCells = function(string) {
 		}else {
 			position = nextSpace(string, nextPosition(position));
 		}
+		console.log('Solved puzzle: %j', solvedString);
 	}
+
 	return solvedString;
 
 };
+
+var sudokuStringToSolve = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
+solveCells(sudokuStringToSolve);
+console.log('Sudoku puzzle being solved: %j', sudokuStringToSolve);	
 
 

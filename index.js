@@ -81,6 +81,14 @@ var solveSpace = module.exports.solveSpace = function(string, position) {
 	return result.length === 1 ? result[0] : undefined;
 };
 
+/**
+ * Description: Stores the solved number in an array and then joins the array and returns a string.
+ *
+ * @function
+ * @param {string} string - A sudoku puzzle as a string of numbers and spaces.
+ * @param {integer} position - Integer representing a position in the string.
+ * @return {string} - A method to return the array as a string with the solved cell.
+ */
 var storeSolvedNumber = module.exports.storeSolvedNumber = function(string, position) {
 	var array = string.split('');
 	var index = indexFromPosition(position);
@@ -88,6 +96,13 @@ var storeSolvedNumber = module.exports.storeSolvedNumber = function(string, posi
 	return array.join('');
 };
 
+/**
+ * Description: Finds the first space it can solve and returns a value.
+ *
+ * @function
+ * @param {string} string - A sudoku puzzle as a string of numbers and spaces.
+ * @return {string} solvedString - The ammended string with the first solvable space.
+ */
 var solveFirstPossibleCell = module.exports.solveFirstPossibleCell = function(string) {
 	var position = nextSpace(string);
 	var solvedString;
@@ -96,21 +111,24 @@ var solveFirstPossibleCell = module.exports.solveFirstPossibleCell = function(st
 		if (solveSpace(string, position)) {
 			
 			solvedString = storeSolvedNumber(string, position);
-		}else {
+		} else {
 			position = nextSpace(string, nextPosition(position));
 		}
-		console.log('Solved puzzle: %j', solvedString);
 	}
-
 	return solvedString;
-
 };
 
+/**
+ * Description: Iterates through a string until all spaces are solved.
+ *
+ * @function
+ * @param {string} string - A sudoku puzzle as a string of numbers and spaces. 
+ * @return {string} string -  A solved puzzle string w/ no spaces.
+ */
 module.exports.solvePuzzles = function(string) {
 	while(string.indexOf(' ') !== -1) {
-			string = solveFirstPossibleCell(string);
+		string = solveFirstPossibleCell(string);
 	}
 	return string;
-
 };
 

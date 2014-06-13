@@ -5,6 +5,7 @@ var index = require('../index');
 var sudokuString = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
 var sudokuString2 = ' 58 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
 var sudokuStringFirstSolved = '158 2 36 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
+var sudokuStringSolved = '158924367247683195936175842561748239394562781782319654419837526623451978875296413';
 
 describe ('(sudoku)', function() {
 	it('start from position 0,0 and move to find space', function() {
@@ -95,7 +96,13 @@ describe ('(sudoku)', function () {
 });
 describe('(sudoku', function () {
 	it('takes in a sudokuString and looks for the first cell it can solve', function () {
-		expect(index.solveCells(sudokuString)).to.eql(sudokuStringFirstSolved);
+		expect(index.solveFirstPossibleCell(sudokuString)).to.eql(sudokuStringFirstSolved);
+	});
+});
+
+describe('(sudoku', function () {
+	it('takes in a sudokuString and iterates until it solves the whole string', function () {
+		expect(index.solvePuzzles(sudokuString)).to.eql(sudokuStringSolved);
 	});
 });
 

@@ -88,7 +88,7 @@ var storeSolvedNumber = module.exports.storeSolvedNumber = function(string, posi
 	return array.join('');
 };
 
-var solveCells = module.exports.solveCells = function(string) {
+var solveFirstPossibleCell = module.exports.solveFirstPossibleCell = function(string) {
 	var position = nextSpace(string);
 	var solvedString;
 
@@ -106,8 +106,11 @@ var solveCells = module.exports.solveCells = function(string) {
 
 };
 
-var sudokuStringToSolve = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
-solveCells(sudokuStringToSolve);
-console.log('Sudoku puzzle being solved: %j', sudokuStringToSolve);	
+module.exports.solvePuzzles = function(string) {
+	while(string.indexOf(' ') !== -1) {
+			string = solveFirstPossibleCell(string);
+	}
+	return string;
 
+};
 

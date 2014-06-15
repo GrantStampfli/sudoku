@@ -20,6 +20,16 @@ var nextPosition = function(position) {
 	return position;
 };
 
+/**
+ * Description: This function looks along a string to find a space.
+ *
+ * @function
+ * @param {string} string - Sudoku puzzle as a string.
+ * @param {object} startingPosition - Optional param: an object to define 
+ * the starting position. If no object is given, function will begin looking at
+ * the begining of the string.
+ * @param {integer} n - description.
+ */
 var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
 	startingPosition = startingPosition || { row: 0, col: 0 };
 	var startingIndex = indexFromPosition(startingPosition);
@@ -27,6 +37,15 @@ var nextSpace = module.exports.nextSpace = function(string, startingPosition) {
 	return positionFromIndex(index);
 };
 
+/**
+ * Description: This function looks within the same row of the space being 
+ * tested to determine if the a number is already present.
+ *
+ * @function
+ * @param {string} string - Sudoku puzzle as a string.
+ * @param {integer} position - Integer representing a position in the string.
+ * @param {integer} n - description.
+ */
 var numExistsInRow = module.exports.numExistsInRow = function(string, position, n) {
 	
 	var rowString = string.substr(position.row * 9, 9);
@@ -34,6 +53,15 @@ var numExistsInRow = module.exports.numExistsInRow = function(string, position, 
 	return (rowString.indexOf(n.toString()) !== -1);
 };
 
+/**
+ * Description: This function looks within the same column of the space being 
+ * tested to determine if the a number is already present.
+ *
+ * @function
+ * @param {string} string - Sudoku puzzle as a string.
+ * @param {integer} position - Integer representing a position in the string.
+ * @param {integer} n - description.
+ */
 var numExistsInCol = module.exports.numExistsInCol = function(string, position, n) {
 
 	var array = string.split('');
@@ -46,11 +74,19 @@ var numExistsInCol = module.exports.numExistsInCol = function(string, position, 
 	return (colString.indexOf(n.toString()) !== -1);
 };
 
+/**
+ * Description: This function looks within the same 3X3 box of the space being 
+ * tested to determine if the a number is already present.
+ *
+ * @function
+ * @param {string} string - Sudoku puzzle as a string.
+ * @param {integer} position - Integer representing a position in the string.
+ * @param {integer} n - description.
+ */
 var numExistsInBox = module.exports.numExistsInBox = function(string, position, n) {
 
 	var boxNumber = Math.floor(position.col / 3) + 
 		Math.floor(position.row / 3) * 3;
-	
 	var rowStartValue = Math.floor(boxNumber / 3) * 3;
 	var colStartValue = (boxNumber % 3) * 3;
 	var array = string.split('');
@@ -66,6 +102,15 @@ var numExistsInBox = module.exports.numExistsInBox = function(string, position, 
 	return (boxString.indexOf(n.toString()) !== -1);
 };
 
+/**
+ * Description: Solves a space if it can be solved and returns a value, 
+ * otherwise 'undefined' is returned.
+ *
+ * @function
+ * @param {string} string - A sudoku puzzle as a string of numbers and spaces.
+ * @param {integer} position - Integer representing a position in the string.
+ * @return {array} - An array of the sudoku puzzle with a cell solved.
+ */
 var solveSpace = module.exports.solveSpace = function(string, position) {
 	var numRange = _.range(1, 10);
 	var result = [];
@@ -77,7 +122,6 @@ var solveSpace = module.exports.solveSpace = function(string, position) {
 			result.push (n);
 		}
 	}); 
-
 	return result.length === 1 ? result[0] : undefined;
 };
 
@@ -92,6 +136,7 @@ var solveSpace = module.exports.solveSpace = function(string, position) {
 var storeSolvedNumber = module.exports.storeSolvedNumber = function(string, position) {
 	var array = string.split('');
 	var index = indexFromPosition(position);
+
 	array[index] = solveSpace(string, position);
 	return array.join('');
 };

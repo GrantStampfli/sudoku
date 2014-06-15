@@ -13,6 +13,13 @@ var positionFromIndex = function(index) {
 	return result;
 };
 
+/**
+ * Description: This function looks along a string to find a space.
+ *
+ * @function
+ * @param {object} startingPosition - An object that defines
+ * the starting position. 
+ */
 var nextPosition = function(position) {
 	position.col += 1;
 	position.row += Math.floor(position.col / 9);

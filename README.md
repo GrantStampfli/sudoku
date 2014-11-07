@@ -1,5 +1,7 @@
 # sudoku
 
+This is app solves a sudoku puzzle.  This is a practice repo.
+
 [![Build status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependencies][david-image]][david-url]
 
 [travis-url]: http://travis-ci.org/GrantStampfli/sudoku
